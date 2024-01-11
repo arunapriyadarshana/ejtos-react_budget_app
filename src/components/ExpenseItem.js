@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import { TiDelete } from 'react-icons/ti';
 import { AppContext } from '../context/AppContext';
 
+// import bootstrap icons
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 const ExpenseItem = (props) => {
     const { dispatch,currency } = useContext(AppContext);
 
@@ -31,7 +34,7 @@ const ExpenseItem = (props) => {
         };
 
         dispatch({
-            type: 'SUB_EXPENSE',
+            type: 'RED_EXPENSE',
             payload: expense
         });
 
@@ -41,8 +44,8 @@ const ExpenseItem = (props) => {
         <tr>
         <td>{props.name}</td>
         <td>{currency}{props.cost}</td>
-        <td><button onClick={event=> increaseAllocation(props.name)}>+</button></td>
-        <td><button onClick={event=> decreaseAllocation(props.name)}>-</button></td>
+        <td><button type="button"  style={{borderRadius:"50%",backgroundColor:'green', color:'white'}} onClick={event=> increaseAllocation(props.name)}><i className="bi bi-plus" style={{fontSize:'20px'}}></i></button></td>
+        <td><button type="button"  style={{borderRadius:"50%",backgroundColor:'red', color:'white'}} onClick={event=> decreaseAllocation(props.name)}><i className="bi bi-dash" style={{fontSize:'20px'}}></i></button></td>
         <td><TiDelete size='1.5em' onClick={handleDeleteExpense}></TiDelete></td>
         </tr>
     );
